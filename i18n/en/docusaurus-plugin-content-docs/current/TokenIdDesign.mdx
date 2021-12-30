@@ -1,31 +1,30 @@
 ---
 title: tokenIdのデザインヒント
 ---
+tokenId is an unique identifier for the NFT.
+It is possible to generate and assign a identifier to an NFT.
+The following are restrictions upon creating an unique identifier.
 
-tokenId は NFT の識別子になります。
-以下の条件を満たしていれば、任意のものを指定することができます。
+- Must be an integer
+- Must be unique against the contract
+- While using Mint, the max value cannot exceed `9007199254740990`
 
-- 整数である
-- コントラクトに対してユニークである
-- Max は`9007199254740990`(Mint の中に限り)
 
-## デザイン案
+## Design proposals
 
-tokenId は任意に決めて問題ありませんが、いくつかの例を紹介します。
+Though there are no strict best practices, here are some examples of generating the tokenId.
 
-### ベーシック
+### Basic
 
-ベーシックな方法としては、`1,2,3`とインクリメントさせます
+The very basic method is to incrementally increase the ID, `1,2,3` etc.
 
-### アドバンス
+### Advanced
+The advanced method is to split the id in to two or more parts to present further information about the item.
+For example, we can create a number in which the first 6 numbers present the edition of the item, and the numbers following are the unique idenitifer of the item.
+This is the method Kyuzan Inc. uses for EGGRYPTO.
 
-桁を区切り、２軸以上を表現します。
 
-例えば、`6 桁以下でエディションを表現し、7 桁以上でアイテムの識別子を表現する`とします。
-アイテムとエディション２軸を表現することができます。
-この方法は、Kyuzan Inc. が運営している EGGRYPTO でも取り入れられています。
-
-#### 例
+#### Example
 
 `1000001`
 
@@ -37,7 +36,7 @@ tokenId は任意に決めて問題ありませんが、いくつかの例を紹
 
 `22000001`
 
-`1000002` <- `1000001`のエディション２
+`1000002` <-  Illustrates edition 2 of `1000001` 
 
 ## メインネットでのテスト作品の tokenId
 
