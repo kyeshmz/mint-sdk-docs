@@ -1,0 +1,123 @@
+---
+title: NFTの発行から販売
+---
+
+import Image from "@theme/IdealImage";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
+Through this tutorial, you will be able to go through a basic transaction of using an NFT on the Rinkeby network.
+
+## 0.Prerequistes
+
+1. An access token is needed, which is provided by contacting Kyuzan Inc.
+2. An access token to the Rinkeby network is needed using [Fortmatic](https://fortmatic.com/)
+3. [#how-to-get-eth-for-rinkebytest-env](/docs/api#how-to-get-eth-for-rinkebytest-env)を参考に Rinkeby の ETH を取得する
+
+## 1.Installation
+
+The SDK is publicly available through npm.
+
+```sh
+% npm i @kyuzan/mint-sdk-js
+```
+
+## 2. Initializing the SDK
+
+```typescript
+import { MintSDK } from '@kyuzan/mint-sdk-js'
+const sdk = new MintSDK({
+  'YOUR_ACCESS_KEY',
+  [4],
+  {
+    fortmatic: {
+      key: 'YOUR_FORTMATIC_KEY',
+    },
+  }
+})
+```
+
+## 3. Acquiring the item list
+
+<img alt="Item List" src={useBaseUrl("/img/tutorial/items.png")} />
+
+```jsx
+const items = sdk.getItems();
+```
+
+## 3. Getting each item information and past transaction data individually
+
+<img alt="Item List" src={useBaseUrl("/img/tutorial/item_detail.png")} />
+
+```jsx
+const item = sdk.getItemById("hoo");
+```
+
+### Getting past transaction history data
+
+<img alt="Item List" src={useBaseUrl("/img/tutorial/history.png")} />
+
+```jsx
+const itemLogs = sdk.getItemLogs("hoo");
+```
+
+## 4. Bidding on an Item
+
+To bit on an item, it is necessary for the User to connect their wallet.
+
+### Wallet connection
+
+<img alt="Item List" src={useBaseUrl("/img/tutorial/connect_wallet.png")} />
+
+```jsx
+await sdk.isWalletConnect(); // false
+await sdk.connectWallet();
+await sdk.isWalletConnect(); // true
+```
+
+### Bidding
+
+<img alt="Item List" src={useBaseUrl("/img/tutorial/bid_modal.png")} />
+
+```jsx
+await sdk.sendTxBid("itemId", 2);
+```
+
+## 5. Ending an auction
+
+For an auction, it is necessary to validate the winner of the auction.
+
+### Getting the current bidding item
+
+<img alt="Item List" src={useBaseUrl("/img/tutorial/items_bidding.png")} />
+
+```jsx
+const items = await sdk.getItemsByBidderAddress("0x1111......");
+```
+
+### Identifying the winner of the auction
+
+We can verify if the current User is the winner by comparing the Users wallet with `Item.currentBidderAddress`.
+
+```jsx
+await sdk.connectWallet(); // required
+const { address } = await sdk.getWalletInfo();
+
+address === item.currentBidderAddress; // if true, the current User is the winner
+```
+
+To deliver the auction item to the winner, the below method can be used.
+
+```jsx
+await sdk.sendTxMakeSuccessfulBid("itemId", "jp");
+```
+
+The second parameter must be the User's current country of residence, which is necessary for consumption tax procedures.
+Asking the users country of residence can be done through UI provided in the frontend.
+
+### Recieving item using Mint
+
+<img alt="Item List" src={useBaseUrl("/img/tutorial/items_collection.png")} />
+
+```jsx
+const tokens = await sdk.getTokensByAddress("0x11111...");
+```

@@ -18,7 +18,7 @@ module.exports = {
   },
   themeConfig: {
     image: "img/ogp.png",
-    metadatas: [{ name: "twitter:card", content: "summary_large_image" }],
+    metadata: [{ name: "twitter:card", content: "summary_large_image" }],
     navbar: {
       title: "Mint Developers",
 
@@ -44,7 +44,10 @@ module.exports = {
           label: "npm",
           position: "right",
         },
-
+        {
+          type: "localeDropdown",
+          position: "right",
+        },
         {
           type: "docsVersionDropdown",
         },
