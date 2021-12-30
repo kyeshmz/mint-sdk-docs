@@ -53,14 +53,15 @@ module.exports = {
     },
   },
   plugins: [
-    [
-      'docusaurus-plugin-typedoc',
-      // Plugin / TypeDoc options
-      {
-        entryPoints: ['../src/index.ts'],
-        tsconfig: '../tsconfig.json',
-      },
-    ],
+    // TODO:
+    // [
+    //   'docusaurus-plugin-typedoc',
+    //   // Plugin / TypeDoc options
+    //   {
+    //     entryPoints: ['../src/index.ts'],
+    //     tsconfig: '../tsconfig.json',
+    //   },
+    // ],
     '@docusaurus/plugin-ideal-image',
   ],
   presets: [

@@ -12,6 +12,7 @@ module.exports = {
     ],
     tokenIdについて: ['TokenIdDesign'],
     通貨について: ['EthInSdk'],
-    'Mint SDK API': require('./typedoc-sidebar.js'),
+    // TODO
+    // 'Mint SDK API': require('./typedoc-sidebar.js'),
   },
 }
