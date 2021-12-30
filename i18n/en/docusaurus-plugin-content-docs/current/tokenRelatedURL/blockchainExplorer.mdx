@@ -1,36 +1,37 @@
 ---
-title: BlockchainExplorerのURL生成方法
+title: Generating a BlockchainExplorer URL
 ---
 
-EtherscanなどのURLを提示して、トランザクション詳細をユーザーに示すことができます。
+By presenting an Etherscan URL, we can get the transaction history of an item and show it to the user.
 
-`Txハッシュ`を含む、アイテム関連のトランザクションは、`SDK.getItemLogs()`で取得することができます。
+You can get the transaction history of an item, including the `TxHash` using `SDK.getItemLogs()`.
 
-各アイテムの`NetworkId`は、`Item.networkId`です。
+
+The `NetworkId` for each item can be referenced by `Item.networkId`.
 
 ## Etherscan
 
-`NetworkId`が`1, 4`のアイテムのトランザクショントラッキングURLは以下の方法で生成できます
+For those with the `NetworkId` as `1` or `4`, the below URL can be used.
 
-### トランザクションをトラッキングするURLを生成する方法
+### Creating a URL to track the transaction for Etherscan
 
 Mainnet(NetworkId=1)
 
 ```typescript
-https://etherscan.io/tx/[Txハッシュ]
+https://etherscan.io/tx/[TxHash]
 ```
 
 Rinkeby(NetworkId=4)
 
 ```typescript
-https://rinkeby.etherscan.io/tx/[Txハッシュ]
+https://rinkeby.etherscan.io/tx/[TxHash]
 ```
 
 ## Matic Explorer
 
-`NetworkId`が`137, 8001`のアイテムのトランザクショントラッキングURLは以下の方法で生成できます
+For those with the `NetworkId` as `137` or `8001`, the below URL can be used.
 
-### トランザクションをトラッキングするURLを生成する方法
+### Creating a URL to track the transaction for matic
 
 Mainnet(NetworkId=137)
 
@@ -38,7 +39,7 @@ Mainnet(NetworkId=137)
 https://explorer-mainnet.maticvigil.com/tx/[Txハッシュ]
 ```
 
-Mumbai(NetworkId=80001)
+Mumbai(NetworkId=8001)
 
 ```typescript
 https://explorer-mumbai.maticvigil.com/tx/[Txハッシュ]
