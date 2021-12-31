@@ -6,7 +6,7 @@ custom_edit_url: null
 hide_title: true
 ---
 
-`ItemStock` is the smallest purchasing unit
+`ItemStock`は購入できる最小単位です
 
 ```
 {
