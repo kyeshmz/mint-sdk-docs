@@ -11,11 +11,11 @@ hide_title: true
 
 [![npm version](https://badge.fury.io/js/%40kyuzan%2Fmint-sdk-js.svg)](https://badge.fury.io/js/%40kyuzan%2Fmint-sdk-js)
 
-[Mint](https://www.mintnft.jp/) クライアント SDK
+[Mint](https://www.mintnft.jp/) Client SDK
 
-## Mint の導入
+## Installing Mint
 
-お気軽に[Kyuzan Inc.](https://www.mintnft.jp/) にお問い合わせください。
+Please don't hesitate to contact [Kyuzan Inc.](https://www.mintnft.jp/) for more information.
 
 ## Getting Started
 
