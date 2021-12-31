@@ -43,47 +43,48 @@ ___
 
 Ƭ **Item**: *object*
 
-Itemはマスターデータ
-Itemが購買・引出されてERC721トークンとなったものが[Token](modules.md#token)
+Item is the master data.
+
+[Token](modules.md#token) is the ERC721 Token equivalent of an Item, when bought or auctioned.
 
 #### Type declaration:
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `authorAddress` | *string* | Itemの作成者ウォレットアドレス |
-| `buyerAddress` | *string* \| ``null`` | 購入者のウォレットアドレス アドレスが null でない場合、Itemが「引出された」「購入された」た状態を表す |
+| `authorAddress` | *string* | The wallet address of the Item creator.  |
+| `buyerAddress` | *string* \| ``null`` | If the buyer address is not null, the value is either `auctioned` or `withdrawn`. |
 | `chainType` | ``"ethereum"`` | - |
 | `collectionId` | *string* | - |
-| `createdBy` | *string*[] | アイテムの作成者 IPFSにあるアイテムデータの`createdBy`値 |
-| `currentBidderAddress?` | *string* \| ``null`` | アイテムの最新の入札者ウォレットアドレス。 tradeType === 'auction or autoExtensionAuction` の時だけ値が入る |
-| `currentPrice?` | *number* | アイテムの現在の入札価格。単位は`ether`。 tradeType === 'auction or autoExtensionAuction` の時だけ値が入る |
-| `defaultEndAt?` | Date | オークション初期終了日時 tradeType === 'auction or autoExtensionAuction` の時だけ値が入る |
-| `description` | *string* | アイテムの詳細 IPFSにあるアイテムデータの`description`値 |
-| `endAt?` | Date | オークション終了日時 autoExtensionAuctionの場合は更新される tradeType === 'auction or autoExtensionAuction` の時だけ値が入る |
+| `createdBy` | *string*[] | Creator of the Item. The IPFS item data property `createdBy`. |
+| `currentBidderAddress?` | *string* \| ``null`` | The wallet address of the latest bidder against the item. Only holds a value when tradeType === 'auction or autoExtensionAuction`. |
+| `currentPrice?` | *number* | The current bidding price against the item in `ether`.  Only holds a value when tradeType === 'auction or autoExtensionAuction`. |
+| `defaultEndAt?` | Date | The default ending date of the auction. Only holds a value when tradeType === 'auction or autoExtensionAuction`. |
+| `description` | *string* | The item description. The IPFS item data property `description`. |
+| `endAt?` | Date | The ending date of the auction. If autoExtensionAuction is true, it automatically updates. Only holds a value when tradeType === 'auction or autoExtensionAuction`. |
 | `feeRatePermill` | *number* | - |
 | `imageURI` | *string* | ipfs://xxxx |
-| `imageURIHTTP` | *object* | imageURIのブラウザ閲覧用 https://xxxx |
+| `imageURIHTTP` | *object* | imageURI for browser preview https://xxxx |
 | `imageURIHTTP.mimeType` | *string* | - |
 | `imageURIHTTP.url` | *string* | - |
-| `initialPrice?` | *number* | オークション開始価格 tradeType === 'auction` の時だけ値が入る |
+| `initialPrice?` | *number* | Auction starting price. Only holds a value when tradeType === 'auction` |
 | `itemId` | *string* | - |
-| `minBidPercentage?` | *number* | アイテムの最低入札価格比 `currentPrice * minBidPercentage`でminBidPriceが求められる tradeType === 'auction or autoExtensionAuction` の時だけ値が入る |
-| `minBidPrice?` | *number* | アイテムの最新の最低入札価格 tradeType === 'auction or autoExtensionAuction` の時だけ値が入る |
+| `minBidPercentage?` | *number* | The minimum bid price ratio against the item. minBidPrice can be calculated by `currentPrice * minBidPercentage`. Only holds a value when tradeType === 'auction or autoExtensionAuction`. |
+| `minBidPrice?` | *number* | The latest minimum bid against the item. Only holds a value when tradeType === 'auction or autoExtensionAuction`. |
 | `mintContractAddress` | *string* | - |
 | `mintShopContractAddress` | *string* | - |
-| `name` | *string* | アイテムの名前 IPFSにあるアイテムデータの`name`値 |
-| `networkId` | [*NetworkId*](modules.md#networkid) | Itemが所属するネットワーク 1 === Ethereum メインネットワーク 4 === Ethereum Rinkebyネットワーク 137 ===  Polygon メインネットワーク 80001 === Matic Mumbaiネットワーク |
-| `physicalOrderStatus?` | ItemsPhysicalOrderStatus | type === 'nftWithPhysicalProduct'だけ値が入る addressIsBlank: エンドユーザーからの住所登録待ち wip: Mint管理者側の配送アクション待ち shipped: 出荷済み |
-| `previews` | { `mimeType`: *string* ; `url`: *string*  }[] | プレビューのURI 動画・画像が入る プレビューが設定されていない場合は空配列になる |
-| `price?` | *number* | アイテムの販売価格。単位は`ether`。 tradeType === 'fixedPrice` の時だけ値が入る |
-| `startAt?` | Date | オークション開始日時 tradeType === 'auction or autoExtensionAuction' の時だけ値が入る |
-| `tokenId` | *number* | `Item`に対応するERC721準拠した tokenId `Item`が買われた時などに、生成されるTokenの tokenId |
+| `name` | *string* | The name of the item. The IPFS item data property `name`. |
+| `networkId` | [*NetworkId*](modules.md#networkid) | The network that the Item belongs to. 1 === Ethereum main network, 4 === Ethereum Rinkeby network,  137 ===  Polygon main network, 80001 === Matic Mumbai network |
+| `physicalOrderStatus?` | ItemsPhysicalOrderStatus | Only holds a value when type === 'nftWithPhysicalProduct'. addressIsBlank: Awaiting further action from end user to complete address input, wip: Awaiting further shipping action from Mint moderators, shipped: Already Shipped |
+| `previews` | { `mimeType`: *string* ; `url`: *string*  }[] | Preview image or video is inserted. When there is no value, it returns an empty array. |
+| `price?` | *number* | Value of the Item in `ether`. Only holds a value when tradeType === 'fixedPrice` の時だけ値が入る |
+| `startAt?` | Date | Auction starting date. Only holds a value when tradeType === 'auction or autoExtensionAuction'. |
+| `tokenId` | *number* | tokenId against an `Item` that is ERC721 compliant. The tokenId of a Token after `Item ` is sold or auctioned. |
 | `tokenURI` | *string* | ipfs://xxxx |
-| `tokenURIHTTP` | *string* | tokenURIのブラウザ閲覧用 https://xxxx |
+| `tokenURIHTTP` | *string* | tokenURI for browser preview https://xxxx |
 | `tradeType` | [*ItemTradeType*](modules.md#itemtradetype) | - |
-| `type?` | [*ItemsType*](modules.md#itemstype) | nftWithPhysicalProduct === 物理アイテム付きアイテム typeがないものは、ノーマルなNFTアイテム |
-| `withdrawableAt?` | Date | 引き出し可能日時。この日時以降、`sendTxMakeSuccessfulBid`を呼ぶことでToken引き出すことができる tradeType === 'autoExtensionAuction` の時だけ値が入る |
-| `yearCreated` | *string* | アイテムの制作年 IPFSにあるアイテムデータの`yearCreated`値 |
+| `type?` | [*ItemsType*](modules.md#itemstype) | nftWithPhysicalProduct === 物理アイテム付きアイテム If there is no type, it is an regular NFT Item, otherwise can be a NFT with a physical product attached. |
+| `withdrawableAt?` | Date | The withdrawable date of the Item. `sendTxMakeSuccessfulBid` can be called after this date to withdraw the Token . Only holds a value when  tradeType === 'autoExtensionAuction`. |
+| `yearCreated` | *string* | The created year of the Item. The IPFS item data property `yearCreated`. |
 
 Defined in: [src/types/Item.ts:10](https://github.com/KyuzanInc/annapurna-sdk-js/blob/5eef657/src/types/Item.ts#L10)
 
@@ -143,7 +144,7 @@ ___
 
 Ƭ **Token**: *object*
 
-TokenはERC721を表現している
+Token expresses ERC721 Standard Token.
 Item:Token = 1:1
 
 #### Type declaration:
@@ -154,15 +155,15 @@ Item:Token = 1:1
 | `contractAddress` | *string* | - |
 | `description` | *string* | - |
 | `imageURI` | *string* | ipfs:// |
-| `imageURIHTTP` | *object* | imageURIのブラウザ閲覧用 https://xxxx |
+| `imageURIHTTP` | *object* | imageURI for browser preview https://xxxx |
 | `imageURIHTTP.mimeType` | *string* | - |
 | `imageURIHTTP.url` | *string* | - |
-| `item` | [*Item*](modules.md#item) | Tokenの元になったItemが入る |
+| `item` | [*Item*](modules.md#item) | Item that originates the Token |
 | `name` | *string* | - |
-| `previews` | { `mimeType`: *string* ; `url`: *string*  }[] | プレビューのURI 動画・画像が入る プレビューが設定されていない場合は空配列になる |
+| `previews` | { `mimeType`: *string* ; `url`: *string*  }[] | Preview image or video is inserted. When there is no value, it returns an empty array. |
 | `tokenId` | *number* | - |
 | `tokenURI` | *string* | ipfs://xxxx |
-| `tokenURIHTTP` | *string* | tokenURIのブラウザ閲覧用 https://xxxx |
+| `tokenURIHTTP` | *string* | tokenURI for browser preview https://xxxx |
 
 Defined in: [src/types/Token.ts:6](https://github.com/KyuzanInc/annapurna-sdk-js/blob/5eef657/src/types/Token.ts#L6)
 

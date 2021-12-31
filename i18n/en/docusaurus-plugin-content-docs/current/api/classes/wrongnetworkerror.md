@@ -7,8 +7,7 @@ hide_title: true
 ---
 
 # Class: WrongNetworkError
-
-ユーザーのウォレットが接続しているネットワークが正しくない
+The network that the user's wallet is connected to is not correct.  
 
 ## Hierarchy
 

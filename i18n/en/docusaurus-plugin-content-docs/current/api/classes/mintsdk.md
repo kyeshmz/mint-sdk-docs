@@ -35,10 +35,10 @@ Defined in: [src/index.ts:97](https://github.com/KyuzanInc/annapurna-sdk-js/blob
 
 • **getWalletInfo**: () => *Promise*<[*WalletInfo*](../modules.md#walletinfo)\>
 
-ウォレットのアカウントと残高情報などの情報が取得できる
+Can get the transactional history and other account information.
 
 **Required**
-- ウォレットに接続していること
+- Requires the wallet to be connected.
 
 **`returns`** 
 
@@ -73,12 +73,12 @@ Defined in: [src/index.ts:97](https://github.com/KyuzanInc/annapurna-sdk-js/blob
 
 ▸ **addEthereumChain**(`networkId`: ``80001`` \| ``137``): *Promise*<void\>
 
-指定したネットワークをウォレットに追加する
-137 => Polygon本番ネットワーク
-80001 => Polygonテストネットワーク
+Adds a specified network to the wallet.
+137 => Polygon production network
+80001 => Polygon development / test network
 
 **Required**
-sdk.isInjectedWallet() => trueの場合のみ（MetaMaskのみ使える）
+sdk.isInjectedWallet() => must be true (Requires the use of Metamask)
 
 #### Parameters:
 
@@ -104,10 +104,10 @@ ___
 
 ▸ **connectWallet**(): *Promise*<void\>
 
-ウォレットに接続
-MetamaskがインストールされているブラウザではMetamaskが、されていない場合はFortmaticに接続を行う
-ウォレットが接続されるとResolveされる
-ウォレット接続をキャンセルした場合は、Rejectされる
+Connects to a wallet.
+If Metamask is installed in the default browser, it will utilize Metamask, otherwise will use Fortmatic.
+If a wallet is connected, it will return Resolve, otherwise will return Reject.
+
 
 ```typescript
 import { MintSDK } from '@kyuzan/mint-sdk-js'
@@ -127,9 +127,10 @@ ___
 
 ▸ **disconnectWallet**(): *Promise*<void\>
 
-ウォレットから切断
-Fortmaticの場合、切断される
-**MetaMaskが接続されている場合は何も実行されない**
+Disconnects the wallet.
+When utilizing Fortmatic, it disconnects from the service.
+When utilizing Metamask, **nothing will happen**.
+
 
 ```typescript
 import { MintSDK } from '@kyuzan/mint-sdk-js'
@@ -148,8 +149,9 @@ ___
 
 ▸ **getAccountInfo**(`arg`: { `walletAddress`: *string*  }): *Promise*<[*AccountInfo*](../interfaces/accountinfo.md)\>
 
-ユーザーのウォレットアドレスの画像や表示名を取得できる
-設定されていない場合は、各項目空文字が入っています
+Returns the account information pertaining to the wallet such as display name or profile picture.
+If there is nothing set, will return a blank string.
+
 
 #### Parameters:
 
@@ -176,7 +178,7 @@ ___
 
 ▸ **getConnectedNetworkId**(): *Promise*<number\>
 
-接続中のネットワークIDを返す
+Returns the connected network id.
 
 **Returns:** *Promise*<number\>
 
@@ -196,13 +198,13 @@ ___
 
 ▸ **getItemById**(`itemId`: *string*): *Promise*<[*Item*](../modules.md#item)\>
 
-ItemのitemId指定でアイテムを取得
+Returns the Item from the specified itemId.
 
 #### Parameters:
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `itemId` | *string* | [Item](../modules.md#item)のitemId |
+| `itemId` | *string* | itemId of an [Item](../modules.md#item) |
 
 **Returns:** *Promise*<[*Item*](../modules.md#item)\>
 
@@ -220,7 +222,7 @@ ___
 
 ▸ **getItemByToken**(`token`: [*Token*](../modules.md#token)): *Promise*<[*Item*](../modules.md#item)\>
 
-Tokenに紐づいたItemを取得
+Returns the originating Item associated with the Token
 
 #### Parameters:
 
@@ -244,8 +246,9 @@ ___
 
 ▸ **getItemLogs**(`itemId`: *string*, `paging?`: { `page`: *number* = 1; `perPage`: *number* = 30 }): *Promise*<{ `accountAddress`: *string* ; `createAt`: Date ; `price`: *number* ; `transactionHash?`: *string* ; `type`: ItemLogTypeEnum  }[]\>
 
-アイテムの履歴(bidされた、買われた)の取得
-最新の物から返される
+Returns the item transactional history.
+It will return starting from the most recent.
+
 
 #### Parameters:
 
@@ -273,21 +276,22 @@ ___
 
 ▸ **getItemShippingInfo**(`arg`: { `itemId`: *string*  }): *Promise*<InlineResponse2006\>
 
-物理アイテム付きのItemの入力された発送先情報を取得
-{@link Items}セキュリティの観点から、ユーザーのSignが必要になります
+Returns the shipping info linked to the NFT item with a corresponding physical item.
+
+{@link Items}From a security perspective, a Sign from the user is necessary
 
 **Required**
-- ウォレットに接続していること
-- ユーザーが[Item](../modules.md#item)の`type`が`nftWithPhysicalProduct`であること
-- [Item](../modules.md#item)が引き出されている or 買われていること（[Token](../modules.md#token)になっていること)
-- ユーザーが[Item](../modules.md#item)の`physicalOrderStatus`が`wip`または`ship`であること
-- ユーザーが[Token](../modules.md#token)の所有者であること
+- Requires a wallet to be connected.
+- The users [Item](../modules.md#item) `type` must be `nftWithPhysicalProduct`
+- [Item](../modules.md#item) must be either withdrawn or bought. Must also have a corresponding [Token](../modules.md#token)
+- The user's [Item](../modules.md#item) `physicalOrderStatus` must be either `wip` or `ship`.
+- The user must be the owner of the [Token](../modules.md#token).
 
 #### Parameters:
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `arg` | *object* | itemId = [Item](../modules.md#item)のitemI |
+| `arg` | *object* | itemId = itemId of an [Item](../modules.md#item) |
 | `arg.itemId` | *string* | - |
 
 **Returns:** *Promise*<InlineResponse2006\>
@@ -300,16 +304,17 @@ ___
 
 ▸ **getItems**(`__namedParameters?`: { `itemType?`: ``"nft"`` \| ``"nftWithPhysicalProduct"`` ; `networkId?`: [*NetworkId*](../modules.md#networkid)[] ; `onSale?`: *boolean* ; `page`: *number* ; `perPage`: *number* ; `sort?`: { `order`: ``"asc"`` \| ``"desc"`` ; `sortBy`: ``"endAt"`` \| ``"startAt"`` \| ``"price"``  } ; `tradeType?`: ``"fixedPrice"`` \| ``"auction"`` \| ``"autoExtensionAuction"``  }): *Promise*<[*Item*](../modules.md#item)[]\>
 
-公開中(Items.openStatus === 'open')のアイテムを取得
-ステータスの変更は管理画面から行えます。
+Returns the Items with the flag `Items.openStatus === 'open'`,
+The status of the items can be changed from the admin panel
 
-#### 制限事項
 
-次の制限事項に注意してください。
+#### Restrictions
 
-- `tradeType === 'fixedPrice'`を指定した場合、`'endAt' | 'startAt'`によるsortは行えません
-- `tradeType === 'auction'`を指定した場合、`price`によるsortは行えません
-- `onSale`を指定した場合、`startAt`によるsortは行えません
+Please take caution of the following restrictions
+
+- If specified as `tradeType === 'fixedPrice'`, it cannot be sorted by `'endAt' | 'startAt'`.
+- If specified as `tradeType === 'auction'`, it cannot be sorted by `price`.
+- If specified as`onSale`, it cannot be sorted by `startAt`.
 
 #### Parameters:
 
@@ -317,11 +322,11 @@ ___
 | :------ | :------ | :------ |
 | `__namedParameters` | *object* | - |
 | `__namedParameters.itemType?` | ``"nft"`` \| ``"nftWithPhysicalProduct"`` | - |
-| `__namedParameters.networkId?` | [*NetworkId*](../modules.md#networkid)[] | 指定しなければ、コンストラクターの値が使われます |
+| `__namedParameters.networkId?` | [*NetworkId*](../modules.md#networkid)[] | If there is no specification, the constructor value will be used.|
 | `__namedParameters.onSale?` | *boolean* |  |
-| `__namedParameters.page` | *number* | ページ数。 |
-| `__namedParameters.perPage` | *number* | 1ページあたりのアイテム数。 デフォルトは30。 |
-| `__namedParameters.sort?` | *object* | `'endAt','startAt'`はオークションの場合に有効で、オークションの終了・開始時間でsortを行います。`price`は固定価格販売の場合のみ有効です。 |
+| `__namedParameters.page` | *number* | Amount of pages.  |
+| `__namedParameters.perPage` | *number* | Amount of items per page. Default to 30.  |
+| `__namedParameters.sort?` | *object* | `'endAt','startAt'` is valid when Item is on sale as an auction. It can be sorted from the starting or ending auction time. `price` is valid only when Item is on sale as a fixed price. |
 | `__namedParameters.sort.order` | ``"asc"`` \| ``"desc"`` | - |
 | `__namedParameters.sort.sortBy` | ``"endAt"`` \| ``"startAt"`` \| ``"price"`` | - |
 | `__namedParameters.tradeType?` | ``"fixedPrice"`` \| ``"auction"`` \| ``"autoExtensionAuction"`` | - |
@@ -343,13 +348,13 @@ ___
 
 ▸ **getItemsByBidderAddress**(`address`: *string*): *Promise*<[*Item*](../modules.md#item)[]\>
 
-指定したアドレスがBidしたItemの一覧を取得
+Returns the bidding history of a specified address.
 
 #### Parameters:
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `address` | *string* | ウォレットのアドレス |
+| `address` | *string* | wallet address |
 
 **Returns:** *Promise*<[*Item*](../modules.md#item)[]\>
 
@@ -367,7 +372,7 @@ ___
 
 ▸ **getServerUnixTime**(): *Promise*<number\>
 
-サーバーのUnixタイムを取得
+Returns the server date in  unix time.
 
 **Returns:** *Promise*<number\>
 
@@ -377,7 +382,7 @@ unix time (ms)
 import { MintSDK } from '@kyuzan/mint-sdk-js'
 
 const sdk = MintSDK.initialize(...)
-await sdk.connectWallet()
+await sdk.connectWallet() 
 await sdk.getServerUnixTime()  // ex) 1615444120104
 ```
 
@@ -389,13 +394,14 @@ ___
 
 ▸ **getTokensByAddress**(`address`: *string*): *Promise*<[*Token*](../modules.md#token)[]\>
 
-指定したアドレスが所持しているMINT経由で獲得したトークンを取得
+Returns a list of tokens acquired using MINT from the specified address.
+
 
 #### Parameters:
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `address` | *string* | Walletのアドレス |
+| `address` | *string* | Address of a wallet |
 
 **Returns:** *Promise*<[*Token*](../modules.md#token)[]\>
 
@@ -413,11 +419,13 @@ ___
 
 ▸ **isCorrectNetwork**(): *Promise*<boolean\>
 
-適切なネットワークかを判定
+Returns if a network is appropriate.
+
 
 **Returns:** *Promise*<boolean\>
 
-trueならば適切なネットワーク
+Returns true, if appropriate.
+
 
 ```typescript
 import { MintSDK } from '@kyuzan/mint-sdk-js'
@@ -434,11 +442,12 @@ ___
 
 ▸ **isInjectedWallet**(): *boolean*
 
-MetaMaskかどうかを判定
+Validates if utilizing MetaMask.
 
 **Returns:** *boolean*
 
-trueならばMetaMask
+Returns true if utilizing MetaMask.
+
 
 ```typescript
 import { MintSDK } from '@kyuzan/mint-sdk-js'
@@ -455,11 +464,11 @@ ___
 
 ▸ **isWalletConnect**(): *Promise*<boolean\>
 
-有効なアカウントがあるの状態を返す
+Returns if an account is valid.
 
 **Returns:** *Promise*<boolean\>
 
-ウォレットが接続されていればtrue
+If a wallet is connected, returns true
 
 ```typescript
 import { MintSDK } from '@kyuzan/mint-sdk-js'
@@ -476,7 +485,8 @@ ___
 
 ▸ **onAccountsChange**(`callback`: (`accounts`: *string*[]) => *any*): *void*
 
-アカウントが変更された際に呼び出される関数を設定できる
+Set a callback when the account has been changed.
+
 
 #### Parameters:
 
@@ -504,7 +514,7 @@ ___
 
 ▸ **onConnect**(`callback`: () => *any*): *void*
 
-ウォレットに接続した際に呼び出される関数を設定できる
+Set a callback when the wallet is connected.
 
 #### Parameters:
 
@@ -532,7 +542,8 @@ ___
 
 ▸ **onDisconnect**(`callback`: () => *any*): *void*
 
-ウォレットから切断した際に呼び出される関数を設定できる
+Set a callback when the wallet is disconnected.
+
 
 #### Parameters:
 
@@ -560,21 +571,21 @@ ___
 
 ▸ **registerItemShippingInfo**(`arg`: { `itemId`: *string* ; `shippingInfo`: *Omit*<[*RegisterItemShippingInfoRequestBody*](../interfaces/registeritemshippinginforequestbody.md), ``"tokenId"`` \| ``"signedData"`` \| ``"chainType"`` \| ``"networkId"`` \| ``"contractAddress"``\>  }): *Promise*<void\>
 
-物理アイテム付きのItemの発送先情報を登録
-ユーザーに配送先情報を入力してもらうフォームなどを用意して使ってください
+Registers the shipping info for an Item associated with a physical item.
+Please prepare a form for the user to input their shipping info. 
 
 **Required**
-- ウォレットに接続していること
-- ユーザーが[Item](../modules.md#item)の`type`が`nftWithPhysicalProduct`であること
-- [Item](../modules.md#item)が引き出されている or 買われていること（[Token](../modules.md#token)になっていること)
-- ユーザーが[Item](../modules.md#item)の`physicalOrderStatus`が`shippingInfoIsBlank`であること
-- ユーザーが[Token](../modules.md#token)の所有者であること
+- Requires a wallet to be connected.
+- The user [Item](../modules.md#item) `type` must be `nftWithPhysicalProduct`.
+- [Item](../modules.md#item) must be withdrawn or bought. Must be associated with（[Token](../modules.md#token))
+- The user [Item](../modules.md#item) `physicalOrderStatus` must be `shippingInfoIsBlank`.
+- The user must be the owner of the [Token](../modules.md#token).
 
 #### Parameters:
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `arg` | *object* | itemId = [Item](../modules.md#item)のitemId, shippingInfo = 配送先情報 |
+| `arg` | *object* | itemId = the itemId of an [Item](../modules.md#item), shippingInfo = the shipping info of the Item. |
 | `arg.itemId` | *string* | - |
 | `arg.shippingInfo` | *Omit*<[*RegisterItemShippingInfoRequestBody*](../interfaces/registeritemshippinginforequestbody.md), ``"tokenId"`` \| ``"signedData"`` \| ``"chainType"`` \| ``"networkId"`` \| ``"contractAddress"``\> | - |
 
@@ -588,18 +599,19 @@ ___
 
 ▸ **sendTxBid**(`itemId`: *string*, `bidPrice`: *number*): *Promise*<TransactionResponse\>
 
-指定した金額でBidするトランザクションを発行
-Bidする謹賀具の総額を`bidPrice`に指定する
+Creates a transaction from the specified bid price.
+The total amount of the bid is passed through the `bidPrice` argument.
+
 
 **Required**
-- ウォレットに接続していること
+- Requires a wallet to be connected.
 
 #### Parameters:
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `itemId` | *string* | [Item](../modules.md#item)のitemId |
-| `bidPrice` | *number* | 単位はether |
+| `bidPrice` | *number* | unit is in ether |
 
 **Returns:** *Promise*<TransactionResponse\>
 
@@ -625,19 +637,19 @@ ___
 
 ▸ **sendTxBuyItem**(`itemId`: *string*, `userResidence?`: ``"unknown"`` \| ``"jp"``): *Promise*<TransactionResponse\>
 
-FixedPriceのアイテムを購入するトランザクションを発行
-ユーザーの居住地を問うUIを合わせて実装必要
-消費税に関する会計処理などがスムーズに行えます
+Creates a transaction for buying an Item at a fixed price.
+Requires a UI that asks for the users residence for accommodating for consumption tax purposes.
+
 
 **Required**
-- ウォレットに接続していること
+- Requires a wallet to be connected.
 
 #### Parameters:
 
 | Name | Type | Default value | Description |
 | :------ | :------ | :------ | :------ |
-| `itemId` | *string* | - | [Item](../modules.md#item)のitemId |
-| `userResidence` | ``"unknown"`` \| ``"jp"`` | 'unknown' | [Residence](../modules.md#residence) 購入者の居住地を指定する |
+| `itemId` | *string* | - | The itemid of an [Item](../modules.md#item) |
+| `userResidence` | ``"unknown"`` \| ``"jp"`` | 'unknown' | [Residence](../modules.md#residence) Specifies the buyers residence |
 
 **Returns:** *Promise*<TransactionResponse\>
 
@@ -667,15 +679,15 @@ ___
 ユーザーの居住地を問うUIを合わせて実装必要です。居住地を設定することで消費税に関する会計処理などがスムーズに行えます
 
 **Required**
-- ウォレットに接続していること
+- Requires a wallet to be connected.
 - **自動延長オークションは、`withdrawableAt`以降に引き出し可能です**
 
 #### Parameters:
 
 | Name | Type | Default value | Description |
 | :------ | :------ | :------ | :------ |
-| `itemId` | *string* | - | [Item](../modules.md#item)のitemId |
-| `userResidence` | ``"unknown"`` \| ``"jp"`` | 'unknown' | [Residence](../modules.md#residence) 購入者の居住地を指定する |
+| `itemId` | *string* | - | The itemId of [Item](../modules.md#item) |
+| `userResidence` | ``"unknown"`` \| ``"jp"`` | 'unknown' | [Residence](../modules.md#residence) Specifies the buyers residence |
 
 **Returns:** *Promise*<TransactionResponse\>
 
@@ -701,12 +713,12 @@ ___
 
 ▸ **updateAccountInfo**(`arg`: { `avatarImageId`: *string* ; `bio`: *string* ; `displayName`: *string* ; `homepageUrl`: *string* ; `instagramAccountName`: *string* ; `twitterAccountName`: *string*  }): *Promise*<void\>
 
-ユーザーのウォレットアドレスの画像や表示名を設定できる
-全ての項目は optionalです。設定しない場合は空文字を入れてください
-`avatarImageId`は`sdk.uploadImg`の返り値です
+Can update the wallet address image and display name. 
+All items are optional, but should not be set as blank string.
+The return value of `avatarImageId` is `sdk.uploadImg`.
 
 **Required**
-- ウォレットに接続していること
+- Requires a wallet to be connected.
 
 #### Parameters:
 
@@ -739,11 +751,12 @@ ___
 
 ▸ **uploadAccountInfoAvatar**(`arg`: { `file`: File  }): *Promise*<{ `imgId`: *string* ; `uploadedImgUrl`: *string*  }\>
 
-`sdk.updateAccountInfo`の引数の`imgId`を取得できる
-uploadedImgUrlはアップロードされた画像のRead用のURLです。
+
+Returns the `imgId` from the `sdk.updateAccountInfo`.
+uploadedImgUrl is a read-only URL for the uploaded image.
 
 **Required**
-- ウォレットに接続していること
+- Requires a wallet to be connected.
 
 #### Parameters:
 
@@ -770,16 +783,16 @@ ___
 
 ▸ **waitForTransaction**(`txHash`: *string*): *Promise*<void\>
 
-Transactionが成功するとResolveするPromiseを返します
+When the transaction is successful, it returns a Resolve.
 
 **Required**
-- ウォレットに接続していること
+- Requires a wallet to be connected.
 
 #### Parameters:
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `txHash` | *string* | {@link ethers.providers.TransactionResponse}のhashプロパティ  ```typescript import { MintSDK } from '@kyuzan/mint-sdk-js' const sdk = await MintSDK.initialize(...) await sdk.connectWallet() // required try {  const tx = await sdk.sendTxBuyItem('item.itemId')  await tx.wait()  // success transaction } catch (err) {  // display error message } ``` |
+| `txHash` | *string* | The hash property of {@link ethers.providers.TransactionResponse}  ```typescript import { MintSDK } from '@kyuzan/mint-sdk-js' const sdk = await MintSDK.initialize(...) await sdk.connectWallet() // required try {  const tx = await sdk.sendTxBuyItem('item.itemId')  await tx.wait()  // success transaction } catch (err) {  // display error message } ``` |
 
 **Returns:** *Promise*<void\>
 
@@ -791,7 +804,7 @@ ___
 
 ▸ `Static`**formatEther**(`bg`: *BigNumber*): *string*
 
-BigNumberをether(通常のETHと表示される価格)にフォーマットして返す
+Returns an BigNumber that is formatted as an ether.
 
 #### Parameters:
 
@@ -801,7 +814,7 @@ BigNumberをether(通常のETHと表示される価格)にフォーマットし�
 
 **Returns:** *string*
 
-Ether単位でパースされたstring
+Returns an ether parsed as a string. 
 
 ```typescript
 import { MintSDK } from '@kyuzan/mint-sdk-js'
@@ -820,17 +833,17 @@ ___
 
 ▸ `Static`**parseEther**(`ether`: *string*): *BigNumber*
 
-ether(通常のETHと表示される価格)をBigNumberとして返す
+Returns the ether price as a BigNumber.
 
 #### Parameters:
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `ether` | *string* | 通常のETHと表示されるもの |
+| `ether` | *string* | Shown as an ether unit |
 
 **Returns:** *BigNumber*
 
-etherをBigNumberとしてparseしたもの
+Returns an ether that is parsed as a BigNumber.
 
 ```typescript
 import { MintSDK } from '@kyuzan/mint-sdk-js'

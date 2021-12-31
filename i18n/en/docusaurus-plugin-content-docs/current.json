@@ -12,7 +12,7 @@
     "description": "The label for category OpenSeaやEtherscanなどへのリンク生成方法 in sidebar main"
   },
   "sidebar.main.category.tokenIdについて": {
-    "message": "tokenIdについて",
+    "message": "About tokenId",
     "description": "The label for category tokenIdについて in sidebar main"
   },
   "sidebar.main.category.通貨について": {

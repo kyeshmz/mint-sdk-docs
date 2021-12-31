@@ -128,7 +128,6 @@ ___
 
 • **signedData**: *string*
 
-以下の項目データにSignしたもの
 
 **`memberof`** RegisterItemShippingInfoRequestBody
 
