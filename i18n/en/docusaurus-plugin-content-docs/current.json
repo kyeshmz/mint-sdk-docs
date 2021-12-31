@@ -8,15 +8,15 @@
     "description": "The label for category Getting Started in sidebar main"
   },
   "sidebar.main.category.OpenSeaやEtherscanなどへのリンク生成方法": {
-    "message": "OpenSeaやEtherscanなどへのリンク生成方法",
-    "description": "The label for category OpenSeaやEtherscanなどへのリンク生成方法 in sidebar main"
+    "message": "Generating a link for OpenSea and Etherscan",
+    "description": "Tutorial for generating a link for OpenSea and Etherscan"
   },
   "sidebar.main.category.tokenIdについて": {
     "message": "About tokenId",
-    "description": "The label for category tokenIdについて in sidebar main"
+    "description": "Design hints for creating tokenId"
   },
   "sidebar.main.category.通貨について": {
-    "message": "通貨について",
-    "description": "The label for category 通貨について in sidebar main"
+    "message": "About currency",
+    "description": "Hints about currency"
   }
 }

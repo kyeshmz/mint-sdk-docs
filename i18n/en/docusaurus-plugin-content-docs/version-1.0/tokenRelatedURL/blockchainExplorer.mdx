@@ -1,0 +1,46 @@
+---
+title: Generating a BlockchainExplorer URL
+---
+
+By presenting an Etherscan URL, we can get the transaction history of an item and show it to the user.
+
+You can get the transaction history of an item, including the `TxHash` using `SDK.getItemLogs()`.
+
+
+The `NetworkId` for each item can be referenced by `Item.networkId`.
+
+## Etherscan
+
+For those with the `NetworkId` as `1` or `4`, the below URL can be used.
+
+### Creating a URL to track the transaction for Etherscan
+
+Mainnet(NetworkId=1)
+
+```typescript
+https://etherscan.io/tx/[TxHash]
+```
+
+Rinkeby(NetworkId=4)
+
+```typescript
+https://rinkeby.etherscan.io/tx/[TxHash]
+```
+
+## Matic Explorer
+
+For those with the `NetworkId` as `137` or `80001`, the below URL can be used.
+
+### Creating a URL to track the transaction for matic
+
+Mainnet(NetworkId=137)
+
+```typescript
+https://explorer-mainnet.maticvigil.com/tx/[Txハッシュ]
+```
+
+Mumbai(NetworkId=80001)
+
+```typescript
+https://explorer-mumbai.maticvigil.com/tx/[Txハッシュ]
+```
