@@ -12,20 +12,20 @@ hide_title: true
 
 ### constructor
 
-\+ **new MintSDK**(`accessToken`: *string*, `networkIds`: [*NetworkId*](../modules.md#networkid)[], `walletSetting`: [*WalletSetting*](../modules.md#walletsetting), `devOption?`: { `backendUrl?`: *string* ; `jsonRPCUrl?`: *string*  }): [*MintSDK*](mintsdk.md)
+\+ **new MintSDK**(`accessToken`: _string_, `networkIds`: [_NetworkId_](../modules.md#networkid)[], `walletSetting`: [_WalletSetting_](../modules.md#walletsetting), `devOption?`: { `backendUrl?`: _string_ ; `jsonRPCUrl?`: _string_ }): [_MintSDK_](mintsdk.md)
 
 #### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `accessToken` | *string* |
-| `networkIds` | [*NetworkId*](../modules.md#networkid)[] |
-| `walletSetting` | [*WalletSetting*](../modules.md#walletsetting) |
-| `devOption?` | *object* |
-| `devOption.backendUrl?` | *string* |
-| `devOption.jsonRPCUrl?` | *string* |
+| Name                    | Type                                           |
+| :---------------------- | :--------------------------------------------- |
+| `accessToken`           | _string_                                       |
+| `networkIds`            | [_NetworkId_](../modules.md#networkid)[]       |
+| `walletSetting`         | [_WalletSetting_](../modules.md#walletsetting) |
+| `devOption?`            | _object_                                       |
+| `devOption.backendUrl?` | _string_                                       |
+| `devOption.jsonRPCUrl?` | _string_                                       |
 
-**Returns:** [*MintSDK*](mintsdk.md)
+**Returns:** [_MintSDK_](mintsdk.md)
 
 Defined in: [src/index.ts:97](https://github.com/KyuzanInc/annapurna-sdk-js/blob/5eef657/src/index.ts#L97)
 
@@ -33,14 +33,15 @@ Defined in: [src/index.ts:97](https://github.com/KyuzanInc/annapurna-sdk-js/blob
 
 ### getWalletInfo
 
-• **getWalletInfo**: () => *Promise*<[*WalletInfo*](../modules.md#walletinfo)\>
+• **getWalletInfo**: () => _Promise_<[_WalletInfo_](../modules.md#walletinfo)\>
 
 Can get the transactional history and other account information.
 
 **Required**
+
 - Requires the wallet to be connected.
 
-**`returns`** 
+**`returns`**
 
 ```typescript
 import { MintSDK } from '@kyuzan/mint-sdk-js'
@@ -51,15 +52,15 @@ await sdk.getWalletInfo()
 
 #### Type declaration:
 
-▸ (): *Promise*<[*WalletInfo*](../modules.md#walletinfo)\>
+▸ (): _Promise_<[_WalletInfo_](../modules.md#walletinfo)\>
 
-**Returns:** *Promise*<[*WalletInfo*](../modules.md#walletinfo)\>
-
-Defined in: [src/index.ts:206](https://github.com/KyuzanInc/annapurna-sdk-js/blob/5eef657/src/index.ts#L206)
+**Returns:** _Promise_<[_WalletInfo_](../modules.md#walletinfo)\>
 
 Defined in: [src/index.ts:206](https://github.com/KyuzanInc/annapurna-sdk-js/blob/5eef657/src/index.ts#L206)
 
-___
+Defined in: [src/index.ts:206](https://github.com/KyuzanInc/annapurna-sdk-js/blob/5eef657/src/index.ts#L206)
+
+---
 
 ### walletStrategy
 
@@ -71,7 +72,7 @@ Defined in: [src/index.ts:97](https://github.com/KyuzanInc/annapurna-sdk-js/blob
 
 ### addEthereumChain
 
-▸ **addEthereumChain**(`networkId`: ``80001`` \| ``137``): *Promise*<void\>
+▸ **addEthereumChain**(`networkId`: `80001` \| `137`): _Promise_<void\>
 
 Adds a specified network to the wallet.
 137 => Polygon production network
@@ -82,11 +83,11 @@ sdk.isInjectedWallet() => must be true (Requires the use of Metamask)
 
 #### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `networkId` | ``80001`` \| ``137`` |
+| Name        | Type             |
+| :---------- | :--------------- |
+| `networkId` | `80001` \| `137` |
 
-**Returns:** *Promise*<void\>
+**Returns:** _Promise_<void\>
 
 ```typescript
 import { MintSDK } from '@kyuzan/mint-sdk-js'
@@ -98,16 +99,15 @@ await sdk.addEthereumChain(137)
 
 Defined in: [src/index.ts:1125](https://github.com/KyuzanInc/annapurna-sdk-js/blob/5eef657/src/index.ts#L1125)
 
-___
+---
 
 ### connectWallet
 
-▸ **connectWallet**(): *Promise*<void\>
+▸ **connectWallet**(): _Promise_<void\>
 
 Connects to a wallet.
 If Metamask is installed in the default browser, it will utilize Metamask, otherwise will use Fortmatic.
 If a wallet is connected, it will return Resolve, otherwise will return Reject.
-
 
 ```typescript
 import { MintSDK } from '@kyuzan/mint-sdk-js'
@@ -117,20 +117,19 @@ await sdk.connectWallet()
 await sdk.isWalletConnect()  // true
 ```
 
-**Returns:** *Promise*<void\>
+**Returns:** _Promise_<void\>
 
 Defined in: [src/index.ts:171](https://github.com/KyuzanInc/annapurna-sdk-js/blob/5eef657/src/index.ts#L171)
 
-___
+---
 
 ### disconnectWallet
 
-▸ **disconnectWallet**(): *Promise*<void\>
+▸ **disconnectWallet**(): _Promise_<void\>
 
 Disconnects the wallet.
 When utilizing Fortmatic, it disconnects from the service.
 When utilizing Metamask, **nothing will happen**.
-
 
 ```typescript
 import { MintSDK } from '@kyuzan/mint-sdk-js'
@@ -139,28 +138,27 @@ const sdk = await MintSDK.initialize(...)
 await sdk.disconnectWallet()
 ```
 
-**Returns:** *Promise*<void\>
+**Returns:** _Promise_<void\>
 
 Defined in: [src/index.ts:187](https://github.com/KyuzanInc/annapurna-sdk-js/blob/5eef657/src/index.ts#L187)
 
-___
+---
 
 ### getAccountInfo
 
-▸ **getAccountInfo**(`arg`: { `walletAddress`: *string*  }): *Promise*<[*AccountInfo*](../interfaces/accountinfo.md)\>
+▸ **getAccountInfo**(`arg`: { `walletAddress`: _string_ }): _Promise_<[_AccountInfo_](../interfaces/accountinfo.md)\>
 
 Returns the account information pertaining to the wallet such as display name or profile picture.
 If there is nothing set, will return a blank string.
 
-
 #### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `arg` | *object* |
-| `arg.walletAddress` | *string* |
+| Name                | Type     |
+| :------------------ | :------- |
+| `arg`               | _object_ |
+| `arg.walletAddress` | _string_ |
 
-**Returns:** *Promise*<[*AccountInfo*](../interfaces/accountinfo.md)\>
+**Returns:** _Promise_<[_AccountInfo_](../interfaces/accountinfo.md)\>
 
 ```typescript
 import { MintSDK } from '@kyuzan/mint-sdk-js'
@@ -172,15 +170,15 @@ const accountInfo = await sdk.getAccountInfo({ walletAddress: '0xxxxxxxx' })
 
 Defined in: [src/index.ts:941](https://github.com/KyuzanInc/annapurna-sdk-js/blob/5eef657/src/index.ts#L941)
 
-___
+---
 
 ### getConnectedNetworkId
 
-▸ **getConnectedNetworkId**(): *Promise*<number\>
+▸ **getConnectedNetworkId**(): _Promise_<number\>
 
 Returns the connected network id.
 
-**Returns:** *Promise*<number\>
+**Returns:** _Promise_<number\>
 
 ```typescript
 import { MintSDK } from '@kyuzan/mint-sdk-js'
@@ -192,21 +190,21 @@ await sdk.getConnectedNetworkId()
 
 Defined in: [src/index.ts:790](https://github.com/KyuzanInc/annapurna-sdk-js/blob/5eef657/src/index.ts#L790)
 
-___
+---
 
 ### getItemById
 
-▸ **getItemById**(`itemId`: *string*): *Promise*<[*Item*](../modules.md#item)\>
+▸ **getItemById**(`itemId`: _string_): _Promise_<[_Item_](../modules.md#item)\>
 
 Returns the Item from the specified itemId.
 
 #### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `itemId` | *string* | itemId of an [Item](../modules.md#item) |
+| Name     | Type     | Description                             |
+| :------- | :------- | :-------------------------------------- |
+| `itemId` | _string_ | itemId of an [Item](../modules.md#item) |
 
-**Returns:** *Promise*<[*Item*](../modules.md#item)\>
+**Returns:** _Promise_<[_Item_](../modules.md#item)\>
 
 ```typescript
 import { MintSDK } from '@kyuzan/mint-sdk-js'
@@ -216,21 +214,21 @@ const item = await sdk.getItemById('item.itemId')
 
 Defined in: [src/index.ts:355](https://github.com/KyuzanInc/annapurna-sdk-js/blob/5eef657/src/index.ts#L355)
 
-___
+---
 
 ### getItemByToken
 
-▸ **getItemByToken**(`token`: [*Token*](../modules.md#token)): *Promise*<[*Item*](../modules.md#item)\>
+▸ **getItemByToken**(`token`: [_Token_](../modules.md#token)): _Promise_<[_Item_](../modules.md#item)\>
 
 Returns the originating Item associated with the Token
 
 #### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `token` | [*Token*](../modules.md#token) |
+| Name    | Type                           |
+| :------ | :----------------------------- |
+| `token` | [_Token_](../modules.md#token) |
 
-**Returns:** *Promise*<[*Item*](../modules.md#item)\>
+**Returns:** _Promise_<[_Item_](../modules.md#item)\>
 
 ```typescript
 import { MintSDK } from '@kyuzan/mint-sdk-js'
@@ -240,26 +238,25 @@ const item = await sdk.getItemByToken(token)
 
 Defined in: [src/index.ts:372](https://github.com/KyuzanInc/annapurna-sdk-js/blob/5eef657/src/index.ts#L372)
 
-___
+---
 
 ### getItemLogs
 
-▸ **getItemLogs**(`itemId`: *string*, `paging?`: { `page`: *number* = 1; `perPage`: *number* = 30 }): *Promise*<{ `accountAddress`: *string* ; `createAt`: Date ; `price`: *number* ; `transactionHash?`: *string* ; `type`: ItemLogTypeEnum  }[]\>
+▸ **getItemLogs**(`itemId`: _string_, `paging?`: { `page`: _number_ = 1; `perPage`: _number_ = 30 }): _Promise_<{ `accountAddress`: _string_ ; `createAt`: Date ; `price`: _number_ ; `transactionHash?`: _string_ ; `type`: ItemLogTypeEnum }[]\>
 
 Returns the item transactional history.
 It will return starting from the most recent.
 
-
 #### Parameters:
 
-| Name | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
-| `itemId` | *string* | - | [Item](../modules.md#item)のitemId |
-| `paging` | *object* | - | - |
-| `paging.page` | *number* | 1 | - |
-| `paging.perPage` | *number* | 30 | - |
+| Name             | Type     | Default value | Description                         |
+| :--------------- | :------- | :------------ | :---------------------------------- |
+| `itemId`         | _string_ | -             | [Item](../modules.md#item)の itemId |
+| `paging`         | _object_ | -             | -                                   |
+| `paging.page`    | _number_ | 1             | -                                   |
+| `paging.perPage` | _number_ | 30            | -                                   |
 
-**Returns:** *Promise*<{ `accountAddress`: *string* ; `createAt`: Date ; `price`: *number* ; `transactionHash?`: *string* ; `type`: ItemLogTypeEnum  }[]\>
+**Returns:** _Promise_<{ `accountAddress`: _string_ ; `createAt`: Date ; `price`: _number_ ; `transactionHash?`: _string_ ; `type`: ItemLogTypeEnum }[]\>
 
 ```typescript
 import { MintSDK } from '@kyuzan/mint-sdk-js'
@@ -270,17 +267,18 @@ const item = await sdk.getItemLogs('Item.itemId')
 
 Defined in: [src/index.ts:399](https://github.com/KyuzanInc/annapurna-sdk-js/blob/5eef657/src/index.ts#L399)
 
-___
+---
 
 ### getItemShippingInfo
 
-▸ **getItemShippingInfo**(`arg`: { `itemId`: *string*  }): *Promise*<InlineResponse2006\>
+▸ **getItemShippingInfo**(`arg`: { `itemId`: _string_ }): _Promise_<InlineResponse2006\>
 
 Returns the shipping info linked to the NFT item with a corresponding physical item.
 
 {@link Items}From a security perspective, a Sign from the user is necessary
 
 **Required**
+
 - Requires a wallet to be connected.
 - The users [Item](../modules.md#item) `type` must be `nftWithPhysicalProduct`
 - [Item](../modules.md#item) must be either withdrawn or bought. Must also have a corresponding [Token](../modules.md#token)
@@ -289,24 +287,23 @@ Returns the shipping info linked to the NFT item with a corresponding physical i
 
 #### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `arg` | *object* | itemId = itemId of an [Item](../modules.md#item) |
-| `arg.itemId` | *string* | - |
+| Name         | Type     | Description                                      |
+| :----------- | :------- | :----------------------------------------------- |
+| `arg`        | _object_ | itemId = itemId of an [Item](../modules.md#item) |
+| `arg.itemId` | _string_ | -                                                |
 
-**Returns:** *Promise*<InlineResponse2006\>
+**Returns:** _Promise_<InlineResponse2006\>
 
 Defined in: [src/index.ts:889](https://github.com/KyuzanInc/annapurna-sdk-js/blob/5eef657/src/index.ts#L889)
 
-___
+---
 
 ### getItems
 
-▸ **getItems**(`__namedParameters?`: { `itemType?`: ``"nft"`` \| ``"nftWithPhysicalProduct"`` ; `networkId?`: [*NetworkId*](../modules.md#networkid)[] ; `onSale?`: *boolean* ; `page`: *number* ; `perPage`: *number* ; `sort?`: { `order`: ``"asc"`` \| ``"desc"`` ; `sortBy`: ``"endAt"`` \| ``"startAt"`` \| ``"price"``  } ; `tradeType?`: ``"fixedPrice"`` \| ``"auction"`` \| ``"autoExtensionAuction"``  }): *Promise*<[*Item*](../modules.md#item)[]\>
+▸ **getItems**(`__namedParameters?`: { `itemType?`: `"nft"` \| `"nftWithPhysicalProduct"` ; `networkId?`: [_NetworkId_](../modules.md#networkid)[] ; `onSale?`: _boolean_ ; `page`: _number_ ; `perPage`: _number_ ; `sort?`: { `order`: `"asc"` \| `"desc"` ; `sortBy`: `"endAt"` \| `"startAt"` \| `"price"` } ; `tradeType?`: `"fixedPrice"` \| `"auction"` \| `"autoExtensionAuction"` }): _Promise_<[_Item_](../modules.md#item)[]\>
 
 Returns the Items with the flag `Items.openStatus === 'open'`,
 The status of the items can be changed from the admin panel
-
 
 #### Restrictions
 
@@ -318,45 +315,80 @@ Please take caution of the following restrictions
 
 #### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `__namedParameters` | *object* | - |
-| `__namedParameters.itemType?` | ``"nft"`` \| ``"nftWithPhysicalProduct"`` | - |
-| `__namedParameters.networkId?` | [*NetworkId*](../modules.md#networkid)[] | If there is no specification, the constructor value will be used.|
-| `__namedParameters.onSale?` | *boolean* |  |
-| `__namedParameters.page` | *number* | Amount of pages.  |
-| `__namedParameters.perPage` | *number* | Amount of items per page. Default to 30.  |
-| `__namedParameters.sort?` | *object* | `'endAt','startAt'` is valid when Item is on sale as an auction. It can be sorted from the starting or ending auction time. `price` is valid only when Item is on sale as a fixed price. |
-| `__namedParameters.sort.order` | ``"asc"`` \| ``"desc"`` | - |
-| `__namedParameters.sort.sortBy` | ``"endAt"`` \| ``"startAt"`` \| ``"price"`` | - |
-| `__namedParameters.tradeType?` | ``"fixedPrice"`` \| ``"auction"`` \| ``"autoExtensionAuction"`` | - |
+| Name                            | Type                                                      | Description                                                                                                                                                                              |
+| :------------------------------ | :-------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `__namedParameters`             | _object_                                                  | -                                                                                                                                                                                        |
+| `__namedParameters.itemType?`   | `"nft"` \| `"nftWithPhysicalProduct"`                     | -                                                                                                                                                                                        |
+| `__namedParameters.networkId?`  | [_NetworkId_](../modules.md#networkid)[]                  | If there is no specification, the constructor value will be used.                                                                                                                        |
+| `__namedParameters.onSale?`     | _boolean_                                                 |                                                                                                                                                                                          |
+| `__namedParameters.page`        | _number_                                                  | Amount of pages.                                                                                                                                                                         |
+| `__namedParameters.perPage`     | _number_                                                  | Amount of items per page. Default to 30.                                                                                                                                                 |
+| `__namedParameters.sort?`       | _object_                                                  | `'endAt','startAt'` is valid when Item is on sale as an auction. It can be sorted from the starting or ending auction time. `price` is valid only when Item is on sale as a fixed price. |
+| `__namedParameters.sort.order`  | `"asc"` \| `"desc"`                                       | -                                                                                                                                                                                        |
+| `__namedParameters.sort.sortBy` | `"endAt"` \| `"startAt"` \| `"price"`                     | -                                                                                                                                                                                        |
+| `__namedParameters.tradeType?`  | `"fixedPrice"` \| `"auction"` \| `"autoExtensionAuction"` | -                                                                                                                                                                                        |
 
-**Returns:** *Promise*<[*Item*](../modules.md#item)[]\>
+**Returns:** _Promise_<[_Item_](../modules.md#item)[]\>
 
 ```typescript
 import { MintSDK } from '@kyuzan/mint-sdk-js'
 const sdk = await MintSDK.initialize(...)
 
-const items = await sdk.getItems({ onSale: true })
+const items = await sdk.getItems({
+    page: 1,
+    perPage: 100,
+    // below args are optional
+    // filter
+    tags: 'a,b,c',
+    // sort
+    sort: {
+      sortBy: 'price',
+      sortDirection: 'desc',
+    },
+  })
 ```
 
 Defined in: [src/index.ts:261](https://github.com/KyuzanInc/annapurna-sdk-js/blob/5eef657/src/index.ts#L261)
 
-___
+---
+
+### getBiddedItemStocks
+
+```typescript
+const tokens = getSdk().getBiddedItemStocksByWalletAddress({
+  walletAddress,
+  page: 1,
+  perPage: 100,
+});
+```
+
+---
+
+### getBoughtOrWithdrawItemStocks
+
+```typescript
+const itemStocks = await getSdk().getBoughtItemStocksByWalletAddress({
+  walletAddress: bidderAddress,
+  page: 1,
+  perPage: 1000,
+});
+```
+
+---
 
 ### getItemsByBidderAddress
 
-▸ **getItemsByBidderAddress**(`address`: *string*): *Promise*<[*Item*](../modules.md#item)[]\>
+▸ **getItemsByBidderAddress**(`address`: _string_): _Promise_<[_Item_](../modules.md#item)[]\>
 
 Returns the bidding history of a specified address.
 
 #### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `address` | *string* | wallet address |
+| Name      | Type     | Description    |
+| :-------- | :------- | :------------- |
+| `address` | _string_ | wallet address |
 
-**Returns:** *Promise*<[*Item*](../modules.md#item)[]\>
+**Returns:** _Promise_<[_Item_](../modules.md#item)[]\>
 
 ```typescript
 import { MintSDK } from '@kyuzan/mint-sdk-js'
@@ -366,15 +398,15 @@ const item = await sdk.getItemsByBidderAddress('0x1111......')
 
 Defined in: [src/index.ts:332](https://github.com/KyuzanInc/annapurna-sdk-js/blob/5eef657/src/index.ts#L332)
 
-___
+---
 
 ### getServerUnixTime
 
-▸ **getServerUnixTime**(): *Promise*<number\>
+▸ **getServerUnixTime**(): _Promise_<number\>
 
-Returns the server date in  unix time.
+Returns the server date in unix time.
 
-**Returns:** *Promise*<number\>
+**Returns:** _Promise_<number\>
 
 unix time (ms)
 
@@ -382,50 +414,51 @@ unix time (ms)
 import { MintSDK } from '@kyuzan/mint-sdk-js'
 
 const sdk = MintSDK.initialize(...)
-await sdk.connectWallet() 
+await sdk.connectWallet()
 await sdk.getServerUnixTime()  // ex) 1615444120104
 ```
 
 Defined in: [src/index.ts:733](https://github.com/KyuzanInc/annapurna-sdk-js/blob/5eef657/src/index.ts#L733)
 
-___
+---
 
 ### getTokensByAddress
 
-▸ **getTokensByAddress**(`address`: *string*): *Promise*<[*Token*](../modules.md#token)[]\>
+▸ **getTokensByAddress**(`address`: _string_): _Promise_<[_Token_](../modules.md#token)[]\>
 
 Returns a list of tokens acquired using MINT from the specified address.
 
-
 #### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `address` | *string* | Address of a wallet |
+| Name      | Type     | Description         |
+| :-------- | :------- | :------------------ |
+| `address` | _string_ | Address of a wallet |
 
-**Returns:** *Promise*<[*Token*](../modules.md#token)[]\>
+**Returns:** _Promise_<[_Token_](../modules.md#token)[]\>
 
 ```typescript
 import { MintSDK } from '@kyuzan/mint-sdk-js'
 const sdk = await MintSDK.initialize(...
-const tokens = await sdk.getTokensByAddress('0x11111...')
+const tokens = await sdk.getTokensByAddress({
+  walletAddress,
+  page: 1,
+  perPage: 100,
+})
 ```
 
 Defined in: [src/index.ts:431](https://github.com/KyuzanInc/annapurna-sdk-js/blob/5eef657/src/index.ts#L431)
 
-___
+---
 
 ### isCorrectNetwork
 
-▸ **isCorrectNetwork**(): *Promise*<boolean\>
+▸ **isCorrectNetwork**(): _Promise_<boolean\>
 
 Returns if a network is appropriate.
 
-
-**Returns:** *Promise*<boolean\>
+**Returns:** _Promise_<boolean\>
 
 Returns true, if appropriate.
-
 
 ```typescript
 import { MintSDK } from '@kyuzan/mint-sdk-js'
@@ -436,18 +469,17 @@ await sdk.isCorrectNetwork() // true
 
 Defined in: [src/index.ts:766](https://github.com/KyuzanInc/annapurna-sdk-js/blob/5eef657/src/index.ts#L766)
 
-___
+---
 
 ### isInjectedWallet
 
-▸ **isInjectedWallet**(): *boolean*
+▸ **isInjectedWallet**(): _boolean_
 
 Validates if utilizing MetaMask.
 
-**Returns:** *boolean*
+**Returns:** _boolean_
 
 Returns true if utilizing MetaMask.
-
 
 ```typescript
 import { MintSDK } from '@kyuzan/mint-sdk-js'
@@ -458,15 +490,15 @@ await sdk.isInjectedWallet() // true
 
 Defined in: [src/index.ts:750](https://github.com/KyuzanInc/annapurna-sdk-js/blob/5eef657/src/index.ts#L750)
 
-___
+---
 
 ### isWalletConnect
 
-▸ **isWalletConnect**(): *Promise*<boolean\>
+▸ **isWalletConnect**(): _Promise_<boolean\>
 
 Returns if an account is valid.
 
-**Returns:** *Promise*<boolean\>
+**Returns:** _Promise_<boolean\>
 
 If a wallet is connected, returns true
 
@@ -479,22 +511,21 @@ await sdk.isWalletConnect()
 
 Defined in: [src/index.ts:153](https://github.com/KyuzanInc/annapurna-sdk-js/blob/5eef657/src/index.ts#L153)
 
-___
+---
 
 ### onAccountsChange
 
-▸ **onAccountsChange**(`callback`: (`accounts`: *string*[]) => *any*): *void*
+▸ **onAccountsChange**(`callback`: (`accounts`: _string_[]) => _any_): _void_
 
 Set a callback when the account has been changed.
 
-
 #### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `callback` | (`accounts`: *string*[]) => *any* |
+| Name       | Type                              |
+| :--------- | :-------------------------------- |
+| `callback` | (`accounts`: _string_[]) => _any_ |
 
-**Returns:** *void*
+**Returns:** _void_
 
 void
 
@@ -508,21 +539,21 @@ sdk.onAccountsChange((accounts: string[]) => {
 
 Defined in: [src/index.ts:659](https://github.com/KyuzanInc/annapurna-sdk-js/blob/5eef657/src/index.ts#L659)
 
-___
+---
 
 ### onConnect
 
-▸ **onConnect**(`callback`: () => *any*): *void*
+▸ **onConnect**(`callback`: () => _any_): _void_
 
 Set a callback when the wallet is connected.
 
 #### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `callback` | () => *any* |
+| Name       | Type        |
+| :--------- | :---------- |
+| `callback` | () => _any_ |
 
-**Returns:** *void*
+**Returns:** _void_
 
 void
 
@@ -536,22 +567,21 @@ sdk.onConnect(() => {
 
 Defined in: [src/index.ts:684](https://github.com/KyuzanInc/annapurna-sdk-js/blob/5eef657/src/index.ts#L684)
 
-___
+---
 
 ### onDisconnect
 
-▸ **onDisconnect**(`callback`: () => *any*): *void*
+▸ **onDisconnect**(`callback`: () => _any_): _void_
 
 Set a callback when the wallet is disconnected.
 
-
 #### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `callback` | () => *any* |
+| Name       | Type        |
+| :--------- | :---------- |
+| `callback` | () => _any_ |
 
-**Returns:** *void*
+**Returns:** _void_
 
 void
 
@@ -565,16 +595,17 @@ sdk.onDisconnect(() => {
 
 Defined in: [src/index.ts:709](https://github.com/KyuzanInc/annapurna-sdk-js/blob/5eef657/src/index.ts#L709)
 
-___
+---
 
 ### registerItemShippingInfo
 
-▸ **registerItemShippingInfo**(`arg`: { `itemId`: *string* ; `shippingInfo`: *Omit*<[*RegisterItemShippingInfoRequestBody*](../interfaces/registeritemshippinginforequestbody.md), ``"tokenId"`` \| ``"signedData"`` \| ``"chainType"`` \| ``"networkId"`` \| ``"contractAddress"``\>  }): *Promise*<void\>
+▸ **registerItemShippingInfo**(`arg`: { `itemId`: _string_ ; `shippingInfo`: _Omit_<[_RegisterItemShippingInfoRequestBody_](../interfaces/registeritemshippinginforequestbody.md), `"tokenId"` \| `"signedData"` \| `"chainType"` \| `"networkId"` \| `"contractAddress"`\> }): _Promise_<void\>
 
 Registers the shipping info for an Item associated with a physical item.
-Please prepare a form for the user to input their shipping info. 
+Please prepare a form for the user to input their shipping info.
 
 **Required**
+
 - Requires a wallet to be connected.
 - The user [Item](../modules.md#item) `type` must be `nftWithPhysicalProduct`.
 - [Item](../modules.md#item) must be withdrawn or bought. Must be associated with（[Token](../modules.md#token))
@@ -583,37 +614,37 @@ Please prepare a form for the user to input their shipping info.
 
 #### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `arg` | *object* | itemId = the itemId of an [Item](../modules.md#item), shippingInfo = the shipping info of the Item. |
-| `arg.itemId` | *string* | - |
-| `arg.shippingInfo` | *Omit*<[*RegisterItemShippingInfoRequestBody*](../interfaces/registeritemshippinginforequestbody.md), ``"tokenId"`` \| ``"signedData"`` \| ``"chainType"`` \| ``"networkId"`` \| ``"contractAddress"``\> | - |
+| Name               | Type                                                                                                                                                                                           | Description                                                                                         |
+| :----------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------- |
+| `arg`              | _object_                                                                                                                                                                                       | itemId = the itemId of an [Item](../modules.md#item), shippingInfo = the shipping info of the Item. |
+| `arg.itemId`       | _string_                                                                                                                                                                                       | -                                                                                                   |
+| `arg.shippingInfo` | _Omit_<[_RegisterItemShippingInfoRequestBody_](../interfaces/registeritemshippinginforequestbody.md), `"tokenId"` \| `"signedData"` \| `"chainType"` \| `"networkId"` \| `"contractAddress"`\> | -                                                                                                   |
 
-**Returns:** *Promise*<void\>
+**Returns:** _Promise_<void\>
 
 Defined in: [src/index.ts:809](https://github.com/KyuzanInc/annapurna-sdk-js/blob/5eef657/src/index.ts#L809)
 
-___
+---
 
 ### sendTxBid
 
-▸ **sendTxBid**(`itemId`: *string*, `bidPrice`: *number*): *Promise*<TransactionResponse\>
+▸ **sendTxBid**(`itemId`: _string_, `bidPrice`: _number_): _Promise_<TransactionResponse\>
 
 Creates a transaction from the specified bid price.
 The total amount of the bid is passed through the `bidPrice` argument.
 
-
 **Required**
+
 - Requires a wallet to be connected.
 
 #### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `itemId` | *string* | [Item](../modules.md#item)のitemId |
-| `bidPrice` | *number* | unit is in ether |
+| Name       | Type     | Description                         |
+| :--------- | :------- | :---------------------------------- |
+| `itemId`   | _string_ | [Item](../modules.md#item)の itemId |
+| `bidPrice` | _number_ | unit is in ether                    |
 
-**Returns:** *Promise*<TransactionResponse\>
+**Returns:** _Promise_<TransactionResponse\>
 
 ```typescript
 import { MintSDK } from '@kyuzan/mint-sdk-js'
@@ -631,27 +662,27 @@ try {
 
 Defined in: [src/index.ts:466](https://github.com/KyuzanInc/annapurna-sdk-js/blob/5eef657/src/index.ts#L466)
 
-___
+---
 
 ### sendTxBuyItem
 
-▸ **sendTxBuyItem**(`itemId`: *string*, `userResidence?`: ``"unknown"`` \| ``"jp"``): *Promise*<TransactionResponse\>
+▸ **sendTxBuyItem**(`itemId`: _string_, `userResidence?`: `"unknown"` \| `"jp"`): _Promise_<TransactionResponse\>
 
 Creates a transaction for buying an Item at a fixed price.
 Requires a UI that asks for the users residence for accommodating for consumption tax purposes.
 
-
 **Required**
+
 - Requires a wallet to be connected.
 
 #### Parameters:
 
-| Name | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
-| `itemId` | *string* | - | The itemid of an [Item](../modules.md#item) |
-| `userResidence` | ``"unknown"`` \| ``"jp"`` | 'unknown' | [Residence](../modules.md#residence) Specifies the buyers residence |
+| Name            | Type                  | Default value | Description                                                         |
+| :-------------- | :-------------------- | :------------ | :------------------------------------------------------------------ |
+| `itemId`        | _string_              | -             | The itemid of an [Item](../modules.md#item)                         |
+| `userResidence` | `"unknown"` \| `"jp"` | 'unknown'     | [Residence](../modules.md#residence) Specifies the buyers residence |
 
-**Returns:** *Promise*<TransactionResponse\>
+**Returns:** _Promise_<TransactionResponse\>
 
 ```typescript
 import { MintSDK } from '@kyuzan/mint-sdk-js'
@@ -669,27 +700,28 @@ try {
 
 Defined in: [src/index.ts:595](https://github.com/KyuzanInc/annapurna-sdk-js/blob/5eef657/src/index.ts#L595)
 
-___
+---
 
 ### sendTxMakeSuccessfulBid
 
-▸ **sendTxMakeSuccessfulBid**(`itemId`: *string*, `userResidence?`: ``"unknown"`` \| ``"jp"``): *Promise*<TransactionResponse\>
+▸ **sendTxMakeSuccessfulBid**(`itemId`: _string_, `userResidence?`: `"unknown"` \| `"jp"`): _Promise_<TransactionResponse\>
 
 オークションで勝利したアイテムを引き出すトランザクションを発行
-ユーザーの居住地を問うUIを合わせて実装必要です。居住地を設定することで消費税に関する会計処理などがスムーズに行えます
+ユーザーの居住地を問う UI を合わせて実装必要です。居住地を設定することで消費税に関する会計処理などがスムーズに行えます
 
 **Required**
+
 - Requires a wallet to be connected.
-- **自動延長オークションは、`withdrawableAt`以降に引き出し可能です**
+- **If automatic extension for the auction is enabled, withdrawing is only avaliable after `withdrawableAt`.**
 
 #### Parameters:
 
-| Name | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
-| `itemId` | *string* | - | The itemId of [Item](../modules.md#item) |
-| `userResidence` | ``"unknown"`` \| ``"jp"`` | 'unknown' | [Residence](../modules.md#residence) Specifies the buyers residence |
+| Name            | Type                  | Default value | Description                                                         |
+| :-------------- | :-------------------- | :------------ | :------------------------------------------------------------------ |
+| `itemId`        | _string_              | -             | The itemId of [Item](../modules.md#item)                            |
+| `userResidence` | `"unknown"` \| `"jp"` | 'unknown'     | [Residence](../modules.md#residence) Specifies the buyers residence |
 
-**Returns:** *Promise*<TransactionResponse\>
+**Returns:** _Promise_<TransactionResponse\>
 
 ```typescript
 import { MintSDK } from '@kyuzan/mint-sdk-js'
@@ -707,32 +739,33 @@ try {
 
 Defined in: [src/index.ts:530](https://github.com/KyuzanInc/annapurna-sdk-js/blob/5eef657/src/index.ts#L530)
 
-___
+---
 
 ### updateAccountInfo
 
-▸ **updateAccountInfo**(`arg`: { `avatarImageId`: *string* ; `bio`: *string* ; `displayName`: *string* ; `homepageUrl`: *string* ; `instagramAccountName`: *string* ; `twitterAccountName`: *string*  }): *Promise*<void\>
+▸ **updateAccountInfo**(`arg`: { `avatarImageId`: _string_ ; `bio`: _string_ ; `displayName`: _string_ ; `homepageUrl`: _string_ ; `instagramAccountName`: _string_ ; `twitterAccountName`: _string_ }): _Promise_<void\>
 
-Can update the wallet address image and display name. 
+Can update the wallet address image and display name.
 All items are optional, but should not be set as blank string.
 The return value of `avatarImageId` is `sdk.uploadImg`.
 
 **Required**
+
 - Requires a wallet to be connected.
 
 #### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `arg` | *object* |
-| `arg.avatarImageId` | *string* |
-| `arg.bio` | *string* |
-| `arg.displayName` | *string* |
-| `arg.homepageUrl` | *string* |
-| `arg.instagramAccountName` | *string* |
-| `arg.twitterAccountName` | *string* |
+| Name                       | Type     |
+| :------------------------- | :------- |
+| `arg`                      | _object_ |
+| `arg.avatarImageId`        | _string_ |
+| `arg.bio`                  | _string_ |
+| `arg.displayName`          | _string_ |
+| `arg.homepageUrl`          | _string_ |
+| `arg.instagramAccountName` | _string_ |
+| `arg.twitterAccountName`   | _string_ |
 
-**Returns:** *Promise*<void\>
+**Returns:** _Promise_<void\>
 
 ```typescript
 import { MintSDK } from '@kyuzan/mint-sdk-js'
@@ -745,27 +778,27 @@ await sdk.updateAccountInfo({ imgId, .... })
 
 Defined in: [src/index.ts:970](https://github.com/KyuzanInc/annapurna-sdk-js/blob/5eef657/src/index.ts#L970)
 
-___
+---
 
 ### uploadAccountInfoAvatar
 
-▸ **uploadAccountInfoAvatar**(`arg`: { `file`: File  }): *Promise*<{ `imgId`: *string* ; `uploadedImgUrl`: *string*  }\>
-
+▸ **uploadAccountInfoAvatar**(`arg`: { `file`: File }): _Promise_<{ `imgId`: _string_ ; `uploadedImgUrl`: _string_ }\>
 
 Returns the `imgId` from the `sdk.updateAccountInfo`.
 uploadedImgUrl is a read-only URL for the uploaded image.
 
 **Required**
+
 - Requires a wallet to be connected.
 
 #### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `arg` | *object* |
-| `arg.file` | File |
+| Name       | Type     |
+| :--------- | :------- |
+| `arg`      | _object_ |
+| `arg.file` | File     |
 
-**Returns:** *Promise*<{ `imgId`: *string* ; `uploadedImgUrl`: *string*  }\>
+**Returns:** _Promise_<{ `imgId`: _string_ ; `uploadedImgUrl`: _string_ }\>
 
 ```typescript
 import { MintSDK } from '@kyuzan/mint-sdk-js'
@@ -777,44 +810,45 @@ const { imgId, uploadedImgUrl } = await sdk.uploadAccountInfoAvatar({ file })
 
 Defined in: [src/index.ts:1045](https://github.com/KyuzanInc/annapurna-sdk-js/blob/5eef657/src/index.ts#L1045)
 
-___
+---
 
 ### waitForTransaction
 
-▸ **waitForTransaction**(`txHash`: *string*): *Promise*<void\>
+▸ **waitForTransaction**(`txHash`: _string_): _Promise_<void\>
 
 When the transaction is successful, it returns a Resolve.
 
 **Required**
+
 - Requires a wallet to be connected.
 
 #### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `txHash` | *string* | The hash property of {@link ethers.providers.TransactionResponse}  ```typescript import { MintSDK } from '@kyuzan/mint-sdk-js' const sdk = await MintSDK.initialize(...) await sdk.connectWallet() // required try {  const tx = await sdk.sendTxBuyItem('item.itemId')  await tx.wait()  // success transaction } catch (err) {  // display error message } ``` |
+| Name     | Type     | Description                                                                                                                                                                                                                                                                                                                                             |
+| :------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `txHash` | _string_ | The hash property of {@link ethers.providers.TransactionResponse} `typescript import { MintSDK } from '@kyuzan/mint-sdk-js' const sdk = await MintSDK.initialize(...) await sdk.connectWallet() // required try { const tx = await sdk.sendTxBuyItem('item.itemId') await tx.wait() // success transaction } catch (err) { // display error message } ` |
 
-**Returns:** *Promise*<void\>
+**Returns:** _Promise_<void\>
 
 Defined in: [src/index.ts:231](https://github.com/KyuzanInc/annapurna-sdk-js/blob/5eef657/src/index.ts#L231)
 
-___
+---
 
 ### formatEther
 
-▸ `Static`**formatEther**(`bg`: *BigNumber*): *string*
+▸ `Static`**formatEther**(`bg`: _BigNumber_): _string_
 
 Returns an BigNumber that is formatted as an ether.
 
 #### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `bg` | *BigNumber* |
+| Name | Type        |
+| :--- | :---------- |
+| `bg` | _BigNumber_ |
 
-**Returns:** *string*
+**Returns:** _string_
 
-Returns an ether parsed as a string. 
+Returns an ether parsed as a string.
 
 ```typescript
 import { MintSDK } from '@kyuzan/mint-sdk-js'
@@ -827,28 +861,28 @@ MintSDK.formatEther(walletInfo.balance) // 3.2
 
 Defined in: [src/index.ts:83](https://github.com/KyuzanInc/annapurna-sdk-js/blob/5eef657/src/index.ts#L83)
 
-___
+---
 
 ### parseEther
 
-▸ `Static`**parseEther**(`ether`: *string*): *BigNumber*
+▸ `Static`**parseEther**(`ether`: _string_): _BigNumber_
 
 Returns the ether price as a BigNumber.
 
 #### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `ether` | *string* | Shown as an ether unit |
+| Name    | Type     | Description            |
+| :------ | :------- | :--------------------- |
+| `ether` | _string_ | Shown as an ether unit |
 
-**Returns:** *BigNumber*
+**Returns:** _BigNumber_
 
 Returns an ether that is parsed as a BigNumber.
 
 ```typescript
-import { MintSDK } from '@kyuzan/mint-sdk-js'
+import { MintSDK } from "@kyuzan/mint-sdk-js";
 
-MintSDK.parseEther('3.2') // BigNumber
+MintSDK.parseEther("3.2"); // BigNumber
 ```
 
 Defined in: [src/index.ts:64](https://github.com/KyuzanInc/annapurna-sdk-js/blob/5eef657/src/index.ts#L64)

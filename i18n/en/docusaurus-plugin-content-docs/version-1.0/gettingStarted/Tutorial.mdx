@@ -105,7 +105,7 @@ const { address } = await sdk.getWalletInfo();
 address === item.currentBidderAddress; // if true, the current User is the winner
 ```
 
-To deliver the auction item to the winner, the below method can be used.
+To withdraw the item to the winner, the below method can be used.
 
 ```jsx
 await sdk.sendTxMakeSuccessfulBid("itemId", "jp");

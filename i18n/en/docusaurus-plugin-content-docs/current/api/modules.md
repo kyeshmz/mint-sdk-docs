@@ -45,14 +45,14 @@ ___
 
 Item is the master data.
 
-[Token](modules.md#token) is the ERC721 Token equivalent of an Item, when bought or auctioned.
+[Token](modules.md#token) is the ERC721 Token equivalent of an Item, when bought or withdrawn.
 
 #### Type declaration:
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `authorAddress` | *string* | The wallet address of the Item creator.  |
-| `buyerAddress` | *string* \| ``null`` | If the buyer address is not null, the value is either `auctioned` or `withdrawn`. |
+| `buyerAddress` | *string* \| ``null`` | If the buyer address is not null, the value is either `sold` or `withdrawn`. |
 | `chainType` | ``"ethereum"`` | - |
 | `collectionId` | *string* | - |
 | `createdBy` | *string*[] | Creator of the Item. The IPFS item data property `createdBy`. |
@@ -62,7 +62,7 @@ Item is the master data.
 | `description` | *string* | The item description. The IPFS item data property `description`. |
 | `endAt?` | Date | The ending date of the auction. If autoExtensionAuction is true, it automatically updates. Only holds a value when tradeType === 'auction or autoExtensionAuction`. |
 | `feeRatePermill` | *number* | - |
-| `imageURI` | *string* | ipfs://xxxx |
+| `metadata.image` | *string* | ipfs://xxxx |
 | `imageURIHTTP` | *object* | imageURI for browser preview https://xxxx |
 | `imageURIHTTP.mimeType` | *string* | - |
 | `imageURIHTTP.url` | *string* | - |
@@ -78,7 +78,7 @@ Item is the master data.
 | `previews` | { `mimeType`: *string* ; `url`: *string*  }[] | Preview image or video is inserted. When there is no value, it returns an empty array. |
 | `price?` | *number* | Value of the Item in `ether`. Only holds a value when tradeType === 'fixedPrice` の時だけ値が入る |
 | `startAt?` | Date | Auction starting date. Only holds a value when tradeType === 'auction or autoExtensionAuction'. |
-| `tokenId` | *number* | tokenId against an `Item` that is ERC721 compliant. The tokenId of a Token after `Item ` is sold or auctioned. |
+| `tokenId` | *number* | tokenId against an `Item` that is ERC721 compliant. The tokenId of a Token after `Item ` is sold or withdrawn. |
 | `tokenURI` | *string* | ipfs://xxxx |
 | `tokenURIHTTP` | *string* | tokenURI for browser preview https://xxxx |
 | `tradeType` | [*ItemTradeType*](modules.md#itemtradetype) | - |
