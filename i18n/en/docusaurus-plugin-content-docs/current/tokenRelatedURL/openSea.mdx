@@ -1,0 +1,46 @@
+---
+title: Generating a OpenSea NFT Page URL
+---
+
+By creating an OpenSea page for the generated NFT, it allows for more secondary market distribution, and show the certification of the NFT more publicly.
+
+- The contract address is `Item.mintContractAddress`
+- The token ID  is `Item.tokenId`
+
+For both `tradeType=fixedPrice` and `tradeType=auction`, the NFT is not published until it is bought or successfully auctioned.
+To check whether the Item has been bought or auctioned, please refer to `Item.buyerAddress` for a value.
+
+
+## Creating an OpenSea NFT Page URL 
+
+### Mainnet(NetworkId=1)
+
+```typescript
+https://opensea.io/assets/[ContractAddress]/[tokenId]
+```
+
+### Rinkeby(NetworkId=4)
+
+```typescript
+https://testnets.opensea.io/assets/[ContractAddress]/[tokenId]
+```
+
+### Mainnet(NetworkId=137)
+
+```typescript
+https://matic.opensea.io/[ContractAddress]/[tokenId]
+```
+
+### Mumbai(NetworkId=80001)
+
+Notice that `/matic` is prepended. 
+
+```typescript
+https://testnets.opensea.io/assets/matic/[ContractAddress]/[tokenId]
+```
+
+### Mainnet(NetworkId=137)
+
+```typescript
+https://matic.opensea.io/matic/[ContractAddress]/[tokenId]
+```

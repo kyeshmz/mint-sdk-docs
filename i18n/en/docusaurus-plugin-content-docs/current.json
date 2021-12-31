@@ -1,0 +1,22 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.main.category.Getting Started": {
+    "message": "Getting Started",
+    "description": "The label for category Getting Started in sidebar main"
+  },
+  "sidebar.main.category.OpenSeaやEtherscanなどへのリンク生成方法": {
+    "message": "OpenSeaやEtherscanなどへのリンク生成方法",
+    "description": "The label for category OpenSeaやEtherscanなどへのリンク生成方法 in sidebar main"
+  },
+  "sidebar.main.category.tokenIdについて": {
+    "message": "tokenIdについて",
+    "description": "The label for category tokenIdについて in sidebar main"
+  },
+  "sidebar.main.category.通貨について": {
+    "message": "通貨について",
+    "description": "The label for category 通貨について in sidebar main"
+  }
+}

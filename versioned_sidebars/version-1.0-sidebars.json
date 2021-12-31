@@ -1,0 +1,64 @@
+{
+  "version-1.0/main": [
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Getting Started",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-1.0/gettingStarted/Tutorial"
+        },
+        {
+          "type": "doc",
+          "id": "version-1.0/gettingStarted/TutorialFixedPrice"
+        },
+        {
+          "type": "doc",
+          "id": "version-1.0/gettingStarted/PhysicalItem"
+        },
+        {
+          "type": "doc",
+          "id": "version-1.0/gettingStarted/UserAccountInfo"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "OpenSeaやEtherscanなどへのリンク生成方法",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-1.0/tokenRelatedURL/openSea"
+        },
+        {
+          "type": "doc",
+          "id": "version-1.0/tokenRelatedURL/blockchainExplorer"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "tokenIdについて",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-1.0/TokenIdDesign"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "通貨について",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-1.0/EthInSdk"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+---
+title: Design regulations for tokenId
+---
+tokenId is an unique identifier for the NFT.
+It is possible to generate and assign a identifier to an NFT.
+The following are restrictions upon creating an unique identifier.
+
+- Must be an integer
+- Must be unique against the contract
+- While using Mint, the max value cannot exceed `9007199254740990`
+
+
+## Design proposals
+
+Though there are no strict best practices, here are some examples of generating the tokenId.
+
+### Basic
+
+The very basic method is to incrementally increase the ID, `1,2,3` etc.
+
+### Advanced
+The advanced method is to split the id in to two or more parts to present further information about the item.
+For example, we can create a number in which the first 6 numbers present the edition of the item, and the numbers following are the unique idenitifer of the item.
+This is the method Kyuzan Inc. uses for EGGRYPTO.
+
+
+#### Example
+
+`1000001`
+
+`2000001`
+
+....
+
+`21000001`
+
+`22000001`
+
+`1000002` <-  Illustrates edition 2 of `1000001` 
+
+## Test item tokenId on the main net 
+The main net was tested by creating items with an itemId decrementing from `9007199254740990`.

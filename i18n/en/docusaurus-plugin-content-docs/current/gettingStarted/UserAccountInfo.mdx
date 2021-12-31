@@ -1,0 +1,49 @@
+---
+title: Setting up and acquiring user profile information
+---
+
+import Image from "@theme/IdealImage";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
+Using the MintSDK, we can setup and show information that is linked to the users wallet address.
+
+## Example
+
+On a user page, we can show user information and past transaction logs that the user has made.
+
+<img alt="Profile Image" src={useBaseUrl("/img/userAccountInfo/profile.png")} />
+
+<img alt="Transaction Image" src={useBaseUrl("/img/userAccountInfo/tx.png")} />
+
+## Implementation Examples
+
+### 1. Profile Setup
+
+We first setup an initial UI like below.
+
+<img alt="form" src={useBaseUrl("/img/userAccountInfo/form.png")} />
+
+To upload an image for the profile picture, please use `sdk.uploadAccountInfoAvatar`.
+If the upload is successful, it will return a Promise Resolve type with the values of `imgId`と`uploadedImgUrl`.
+
+`imgId` is an argument for `sdk.updateAccountInfo`.
+
+`uploadedImgUrl` is an url containing the uploaded image, which can be used for preview purposes.
+
+```typescript
+const { imgId, uploadedImgUrl } = await sdk.uploadAccountInfoAvatar({ file });
+```
+
+To create and update profile information, we use the `sdk.updateAccountInfo` method.
+
+```typescript
+await sdk.updateAccountInfo({ imgId, .... })
+```
+
+### 2. Acquiring profile information
+
+To get information from a profile, please use `sdk.getAccountInfo`. The wallet address can be set by passing `walletAddress` as an argument.
+
+```typescript
+const accountInfo = await sdk.getAccountInfo({ walletAddress: "0xxxxxxxx" });
+```
